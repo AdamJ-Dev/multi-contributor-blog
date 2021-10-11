@@ -1,0 +1,27 @@
+<html lang="en">
+<%- include("../partials/head.ejs") %>
+<body>
+    <%- include("../partials/nav.ejs") %>
+    <div class="container login-container rounded pt-3 my-4" method="post">
+        <h2 class="text-center">Log in:</h2>
+        <form class="login-form mt-4 mx-auto">
+            <label for="email" class="form-label">Email:</label>
+            <input type="text" id="email" class="form-control" name="email"/>
+            <div class="form-text email-error"></div>
+            <label for="password" class="form-label mt-3">Password:</label>
+            <input type="password" id="password" class="form-control" name="password"/>
+            <div class="form-text password-error"></div>
+            <button class="btn btn-primary mt-3 mb-2">Log in</button>
+        </form>
+        <p>Haven't registered an account? <a href="/signup">Sign up</a>.</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <script src="javascript/handleLogin.js"></script>
+    <%- include("../partials/footerScripts.ejs") %>
+</body>
+
+</html>
+
+
+
+

@@ -1,0 +1,7 @@
+<nav class="nav profile-nav navbar justify-content-center d-sm-flex-column mt-sm-3">
+    <a class=<%= active === "/blogs" ? "nav-link active": "nav-link" %> href="/profile/blogs/<%= user._id %>">Blogs</a>
+    <div class="break"></div>
+    <a class=<%= active === "/images" ? "nav-link active": "nav-link" %> href="/profile/images/<%= user._id %>">Images</a>
+    <div class="break"></div>
+    <a class=<%= active === "/drafts" ? "nav-link active": "nav-link" %> href="/profile/drafts/<%= user._id %>">Drafts</a>
+</nav>

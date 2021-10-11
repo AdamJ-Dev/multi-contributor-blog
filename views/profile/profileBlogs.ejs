@@ -1,0 +1,68 @@
+<html lang="en">
+    <%- include("../partials/head.ejs") %>
+    <body id="body">
+        <div class="container-fluid">
+            <%- include("../partials/nav.ejs")%>
+            <div class="d-sm-none border">
+                <%- include("../partials/profileNav.ejs") %>
+            </div>
+            <div class="row mt-3">
+                <div class="profile-nav-container border-end d-none d-sm-block col-sm-2">
+                    <%- include("../partials/profileNav.ejs") %>
+                </div>
+                <div class="col-sm-10">
+                    <div id="author-welcome" class="author-welcome container mt-4">
+                        <h1 class="text-primary">Welcome, <%= user.author %></h1>
+                        <h2 class="my-4">Your Blogs:</h2>
+                      </div>
+                    <div class="blogs-wrapper container my-5 d-flex justify-content-center">  
+                        <div class="load-number hidden">5</div>
+                        <% if (Array.from(myBlogs).length !== 0) { %>
+                        <div class="row col-10">
+                            <div class="blogs-list">
+                                    <% Array.from(myBlogs).forEach((blog, index, blogs) => { 
+                                        const hidden = index >= 5 ? "hidden": "";
+                                    %>
+                                            <div class="<%= `blog-wrapper index-${index} ${hidden} row border-last-false` %>" >
+                                                <div class="col-9 col-sm-11 justify-self-start py-3">
+                                                    <p class="blog-date text-secondary"><%- getDate(blog.createdAt) %></p>
+                                                    <a href=<%= "/blog/" + blog._id %> class="blog">
+                                                        <div class="blog-title my-2">
+                                                            <h4><%=blog.title %></p>
+                                                        </div>
+                                                        <p><%= blog.snippet%></p>
+                                                    </a>
+                                                </div>
+                                                <div class="col-3 col-sm-1 pb-1 d-flex align-self-end justify-self-end justify-content-end">
+                                                    <i id=<%= "/blog/" + blog._id %> class="delete-blog bi bi-trash-fill" data-bs-toggle="modal" data-bs-target="#confirm-delete"></i>
+                                                </div>  
+                                            </div>
+                                    <% }); %>
+                            </div>
+                            <% if (Array.from(myBlogs).length > 5) { %>
+                            <button class="load-more my-3 btn load-btn btn-secondary">Load more</button>
+                            <div class="container-fluid text-center my-3">
+                                <a href="#body" class="to-top lead hidden text-secondary">Top</a>
+                            </div>
+                            <% } %>
+                        </div>
+                        
+                        <% } else { %>
+                            <div class="container-fluid">
+                                <p><em>You have not posted any blogs.</em></p>
+                            </div>
+                        <% } %>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<%- include("../partials/deleteModal.ejs") %>
+
+<script src="/javascript/handleDelete.js"></script>
+<script src="/javascript/handleLoadMore.js"></script>
+<%- include("../partials/footerScripts.ejs") %>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<nav class="mt-2 container-fluid navbar navbar-expand-sm navbar-light justify-content-end">
+    <button class="navbar-toggler m-2" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></aspn>
+    </button>
+    <div id="main-nav" class="collapse navbar-collapse justify-content-sm-center justify-content-md-end align-items-center">
+        <a href="/" class="nav-link me-1 h6">Home</a>
+        <a href="/about" class="nav-link me-1 h6">About</a>
+        <% if (user) { %>
+            <% if (title !== "Profile") { %>
+                <a href=<%= "/profile/" + user._id %> class="nav-link me-1 h6">Profile</a>
+            <% } if (!title.includes("Create blog")) { %>
+                <p class="nav-link me-sm-1 h6"><button id="create-blog-link" class="p-2 btn btn-outline-primary">Create New Blog</button></p>
+            <% } %>          
+            <a href="/logout" class="nav-link me-1 h6"><button id="logout" class="btn btn-secondary">Log Out</button></a>
+        <% } else { %>
+                <% if (title !== "Log in") {%> 
+                    <a href="/login" class="nav-link me-1 h6"><button class="btn btn-outline-primary">Log in</button></a>
+                <% } %>
+                <% if (title !== "Sign up") {%> 
+                    <a href="/signup" class="nav-link me-1 h6"><button class="btn btn-outline-primary">Sign up</button></a>
+                <% } %>
+        <% } %>   
+    </div>
+</nav>

@@ -1,0 +1,71 @@
+<html lang="en">
+    <%- include("../partials/head.ejs") %>
+    <body>
+
+        <div class="container-fluid">
+            <%- include("../partials/nav.ejs")%>
+            <div class="d-sm-none border">
+                <%- include("../partials/profileNav.ejs") %>
+            </div>
+            <div class="row  mt-3">
+                <div class="profile-nav-container border-end d-none d-sm-block col-sm-2">
+                    <%- include("../partials/profileNav.ejs") %>
+                </div>
+                <div class="col-sm-10">
+                    <div class="images-info container mt-4">
+                        <h2>Your Image Collection:</h2>
+                        <div class="images-instructions mt-4">
+                                <p>To use an image in your blog, first ensure you have uploaded it to your profile. </p> 
+                                <p>You can then import the image within the body of your blog using markdown formatting like so<br>
+                                    <code>&lt;img src="the link" alt="a text description of the image" style="(max-)width: ...; (max-)height: ... "&gt;</code>.<br>
+                                   </p>
+                                <p>For reasons of responsive design, width and height must use 
+                                    <a href="https://www.w3schools.com/cssref/css_units.asp#:~:text=multiple%20device%20pixels.-,Relative%20Lengths,-Relative%20length%20units" target="_blank">relative units</a>. For example 
+                                    <code>style="max-width: 100%; height: auto"</code>.</p>
+                                    <p class="text-secondary">(Note that <code>auto</code> preserves aspect ratio after one dimension is set.)</p>        
+                        </div>
+                    </div>   
+            
+                    <div class="images-wrapper container d-flex justify-content-center">  
+                        <div class="row col-10">
+                            <div class="images-list">
+                                    <% Array.from(myImages).forEach((img, index, images) => { %>
+                                            <div class="image-wrapper mb-4 row image-first-<%= index === 0%> border-last-false d-flex">
+                                                <div class="col-9 col-sm-11 justify-self-start py-3">
+                                                    <h5 class="image-name mb-2"><%= img.name %></h5>
+                                                    <br>
+                                                    <div class="image-link my-2">
+                                                        <p><i id="/images/<%= img.key %>" class="copy-image-link bi bi-clipboard d-inline"></i>
+                                                        <a href="/images/<%= img.key %>" target="_blank">/images/<%= img.key %></a></p>
+                                                        <div id="confirm-copied" class="confirm-copied">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3 col-sm-1 pb-1 d-flex align-self-end justify-self-end justify-content-end">
+                                                    <i id=<%= "/images/" + img.key %> class="delete-image bi bi-trash-fill" data-bs-toggle="modal" data-bs-target="#confirm-delete"></i>
+                                                </div>  
+                                            </div>
+                                    <% }); %>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="add-images container mt-2">
+                        <form id="blog-imgs" action="/uploads" method="post" encType="multipart/form-data">
+                            <label for="choose-imgs" class="mb-3"><h5>Add images:</h5></label>
+                            <br>
+                            <input class="mb-4" id="choose-imgs" type="file" name="images" accept="image/*" multiple/>
+                            <br>
+                            <button class="btn btn-primary">Upload</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    <%- include("../partials/deleteModal.ejs") %>   
+    <%- include("../partials/footerScripts.ejs") %>
+    <script src="/javascript/handleDelete.js"></script>
+    <script src="/javascript/handleCopy.js"></script>
+    </body>
+</html>

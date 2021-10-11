@@ -1,0 +1,38 @@
+<html lang="en">
+    <%- include("../partials/head.ejs") %>
+    <body id="body">
+        <%- include("../partials/nav.ejs")%>
+        <div class="load-number hidden">5</div>
+        <div id="blogs-wrapper" class="blogs-wrapper container my-5">  
+            <h2 id="voyeur-introduce" class="mt-5 mb-4 voyeur-introduce"><em><%= author %></em>'s Blogs:</h2>
+            <div class="blogs-list">
+                <% if (Array.from(blogs).length !== 0) { %>
+                    <% Array.from(blogs).forEach((blog, index, blogs) => { 
+                        const hidden = index >= 5 ? "hidden": "";
+                    %>
+                        <div class="<%= `blog-wrapper index-${index} ${hidden} p-3 border-last-false`%>>">
+                            <p class="blog-date text-secondary me-3"><%- getDate(blog.createdAt) %></p>
+                            <a href=<%= "/blog/" + blog._id %> class="blog">
+                                <div class="blog-title my-2">
+                                    <h4><%=blog.title %></p>
+                                </div>
+                                <h5><%= blog.snippet%></h5>
+                            </a>
+                        </div>
+                    <% }); %>
+                <% } else { %>
+                    <p><em>This author has not posted any blogs.</em></p>
+                <% } %>
+            </div>
+            <div class="container my-2">
+                <button class="load-more my-3 btn load-btn btn-secondary">Load more</button>
+        </div>
+            <div class="container my-2">
+                <a href="#body" class="to-top lead hidden text-secondary">Top</a>
+            </div>
+        <script src="/javascript/handleLoadMore.js"></script>
+        <%- include("../partials/footer.ejs") %>
+        <%- include("../partials/footerScripts.ejs") %>
+    </body>
+    
+</html>

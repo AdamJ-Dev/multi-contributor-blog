@@ -1,0 +1,190 @@
+body {
+    background: #f8f8f8 !important;
+}
+
+
+.hidden {
+    display: none !important;
+}
+
+/* New blog */
+
+
+.view {
+    width: 98%
+}
+
+.draft-title {
+    background: transparent;
+    border: none;
+    font-size: 2em;
+}
+
+.draft-title:focus {
+    outline: none;
+}
+
+/* Nav */
+
+.page-name:hover {
+    cursor: pointer;
+}
+
+/* Index/profile page */
+
+
+.profile-nav .break {
+    flex-basis: 100%;
+    height: 0;
+}
+
+.profile-nav .nav-link {
+    color: navy;
+    margin-bottom: 1em;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.profile-nav .nav-link:hover {
+    color: rgba(0, 0, 128, 0.7)
+}
+
+
+.link-border-bottom {
+    border-bottom: 1px solid silver;
+}
+
+.blogs-wrapper-home {
+    border: 1px solid silver;
+    background: #F5F5F5;
+}
+
+.blogs-wrapper h1, .images-info h2 {
+    color: navy
+}
+
+.blog-title p, .blog-title h4 {
+    display: inline;
+}
+
+.border-last-false {
+    border-bottom: 1px solid silver;
+}
+
+.image-first-true {
+    margin-top: .7rem !important;
+}
+
+.page-num-nav {
+    color: black;
+    font-weight: 150;
+    text-decoration: none;
+}
+
+.blog-wrapper a:hover, .draft-wrapper a:hover, .page-num-nav:hover {
+    color: grey
+}
+
+.blog, .draft {
+    color: black;
+    text-decoration: none;
+}
+
+.author-welcome h2 {
+    color: navy
+}
+
+.delete-blog, .blog-date, .image-wrapper h5, .image-wrapper i, .image-wrapper p {
+    display: inline;
+}
+
+.delete-blog:hover, .delete-image:hover, .copy-image-link:hover {
+    cursor: pointer;
+}
+
+.images p {
+    max-width: 90%;
+}
+
+.image-link {
+    word-wrap: break-word;
+}
+
+.confirm-copied {
+    color: rgba(0, 0, 0, .5);
+    font-size: 0.6em;
+    width: 50%
+}
+
+/* About page */
+
+.about {
+    border: 1px solid silver;
+    background: #F5F5F5
+}
+
+.about-title h2 {
+    color: navy
+}
+
+/* Login/signup page */
+
+
+.login-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.login-container, .signup-container {
+    border: 1px solid silver;
+    font-size: 0.9em;
+}
+
+
+
+.login-container h2, .signup-container h2 {
+    color: navy
+}
+
+.login-form, .signup-form {
+    width: 60%;
+}
+
+/* Viewblog page */
+
+
+.blog-body-container {
+    border-top: 1px solid silver;
+    border-bottom: 1px solid silver;
+}
+
+.viewblog-profile-link {
+    color: inherit;
+    text-decoration: none
+}
+
+.viewblog-profile-link:hover {
+    color: gray;
+}
+
+/* Voyeur page */
+
+.voyeur-introduce {
+    color: navy
+}
+
+/* Media queries */
+
+@media (max-width: 575px) {
+    #main-nav .nav-link {
+       text-align: end;
+    }
+    .profile-nav .break {
+        flex-basis: 0;
+    }
+    .profile-nav .nav-link {
+        margin-bottom: 0px;
+    }
+}

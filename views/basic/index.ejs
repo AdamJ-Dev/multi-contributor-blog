@@ -1,0 +1,41 @@
+<html lang="en">
+    <%- include("../partials/head.ejs") %>
+    <body>
+        <%- include("../partials/nav.ejs")%>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="blogs-wrapper blogs-wrapper-home col-11 py-5 my-3 text-center rounded">  
+                    <h1 class="mt-2 mb-5">Unfoolable BlogPaper</h1>
+                    <div class="blogs-list">
+                        <% blogs.forEach((blog, index) => { %>
+                            <div class="blog-wrapper p-3 border-last-<%= index + 1 == blogs.length %>">
+                                <a href=<%= "/blog/" + blog._id %> class="blog">
+                                    <p class="text-secondary"><%- getDate(blog.createdAt) %></p>
+                                    <div class="blog-title mb-2">
+                                        <h4><%=blog.title %> | </h4><p class="lead"><em><%=blog.author%></em></p>
+                                    </div>
+                                    <h5><%= blog.snippet%></h5>
+                                </a>
+                            </div>
+                        <% }); %>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center my-3">
+                <% if ((navigationStatus === "last") || (navigationStatus === "middling")) {%>
+                    <div class="col-5 col-md-3 text-center">
+                        <a href=<%= "/page/" + (pageNumber - 1).toString() %>  id="get-previous" class="page-num-nav lead"><i class="bi bi-chevron-left"></i> Previous</a>
+                    </div>
+                <% } %>
+                <% if ((navigationStatus === "first") || (navigationStatus === "middling")) {%>
+                    <div class="col-5 col-md-3 text-center">
+                        <a href=<%= "/page/" + (pageNumber + 1).toString() %>  id="get-next" class="page-num-nav lead">Next <i class="bi bi-chevron-right"></i></a>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+        <%- include("../partials/footer.ejs") %>
+        <%- include("../partials/footerScripts.ejs") %>
+    </body>
+</html>
+
