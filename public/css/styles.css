@@ -98,7 +98,7 @@ body {
     display: inline;
 }
 
-.delete-blog:hover, .delete-image:hover, .copy-image-link:hover {
+.delete-blog:hover, .delete-image:hover, .delete-draft:hover, .copy-image-link:hover {
     cursor: pointer;
 }
 
