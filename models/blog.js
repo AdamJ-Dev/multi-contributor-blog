@@ -5,7 +5,8 @@ const mongoose = require("mongoose")
 const blogSchema = new mongoose.Schema({
     title: {
         type: String, 
-        required: [true, "Your blog needs a title."], 
+        required: [true, "Your blog needs a title."],
+        maxlength: [100, "Your title must not exceed 100 characters."],
         unique: true 
     },
     snippet: {
